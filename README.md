@@ -1,6 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Welcome to Mycollection.io 👋👋
 
-## Getting Started
+Mycollection.io is an open source SaaS, which allows anyone to list a collection and then access it directly online via an account.
+
+## Getting Started 🤓
 
 First, run the development server:
 
@@ -10,13 +12,24 @@ yarn dev
 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can also build : 
+
+```bash
+yarn build
+```
+And deploy it anywhere on port 3000:
+
+```bash
+
+yarn start
+
+```
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Find more information about my work:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Linkedin](https://www.linkedin.com/in/alex-pawlonski/)
+- [alexpawlonski.tech](https://alexpawlonski.tech) 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
