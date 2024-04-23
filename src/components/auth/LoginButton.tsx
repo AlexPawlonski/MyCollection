@@ -6,11 +6,11 @@ export default function LoginButton() {
     <button
       className=""
       onClick={async (e) => {
-        e.preventDefault()
-        await signIn();
+        e.preventDefault();
+        await signIn("google", { callbackUrl: "/" });
       }}
     >
-      test
+      Conection with google
     </button>
   );
 }
