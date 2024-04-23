@@ -24,6 +24,10 @@ And deploy it anywhere on port 3000:
 yarn start
 
 ```
+## Connection setup 
+
+To be able to use the connection via Google you must add your ID and secret in an .env like in .env.exemple.
+[Google API credetials](https://console.cloud.google.com/apis/credentials)
 
 ## Learn More
 
