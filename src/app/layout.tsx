@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Saas for collector",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
