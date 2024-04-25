@@ -1,10 +1,11 @@
-import { getRequireAuthSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { PrismaClient } from "@prisma/client";
 import { Suspense } from "react";
 
-import LogoutButton from "@/components/auth/LogoutButton";
-import Loading from "@/components/dataUx/Loading";
+import { PrismaClient } from "@prisma/client";
+import { getRequireAuthSession } from "@/lib/auth";
+
+import { LogoutButton } from "@/components/auth";
+import { Loading } from "@/components/dataUx";
 
 export default async function Home() {
   const session = await getRequireAuthSession();
