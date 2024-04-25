@@ -15,20 +15,41 @@ export default async function Home() {
 
   const prisma = new PrismaClient();
 
-  const items = await prisma.account.findFirstOrThrow({
-    where: {
-      userId: session?.user.id,
-    },
+  const collections = await prisma.collection.findFirst({
     select: {
       items: true,
     },
   });
 
-  //ADD
+  // const account = await prisma.account.findFirstOrThrow({
+  //   where: {
+  //     userId: session?.user.id,
+  //   },
+  //   select: {
+  //     id: true,
+  //   },
+  // });
+
+  // const collection = await prisma.collection.findFirstOrThrow({
+  //   where: {
+  //     accountId: account.id,
+  //   },
+  //   select: {
+  //     id: true,
+  //   },
+  // });
+
+  // await prisma.collection.create({
+  //   data: {
+  //     name: "Categorie 1",
+  //     accountId: account.id,
+  //   },
+  // });
+
   // await prisma.item.create({
   //   data: {
-  //     name: "test",
-  //     accountId: account.id,
+  //     name: "Dark soul 3",
+  //     collectionId: collection.id,
   //   },
   // });
 
@@ -46,13 +67,12 @@ export default async function Home() {
   //  select: { id: }
   // });
 
-
   return (
     <Suspense fallback={<Loading />}>
       <main>
         <LogoutButton />
         Main page <p>{JSON.stringify(session, null, 2)}</p>
-        {JSON.stringify(items, null, 2)}
+        {JSON.stringify(collections, null, 2)}
       </main>
     </Suspense>
   );
