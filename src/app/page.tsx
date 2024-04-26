@@ -4,8 +4,8 @@ import { Suspense } from "react";
 import { PrismaClient } from "@prisma/client";
 import { getRequireAuthSession } from "@/lib/auth";
 
-import { LogoutButton } from "@/components/auth";
 import { Loading } from "@/components/dataUx";
+import { ProfilComponent } from "@/components/auth";
 
 export default async function Home() {
   const session = await getRequireAuthSession();
@@ -71,9 +71,8 @@ export default async function Home() {
   return (
     <Suspense fallback={<Loading />}>
       <main>
-        <LogoutButton />
-        Main page <p>{JSON.stringify(session, null, 2)}</p>
-        {JSON.stringify(collections, null, 2)}
+        <ProfilComponent session={session} />
+        {/* {JSON.stringify(collections, null, 2)} */}
       </main>
     </Suspense>
   );

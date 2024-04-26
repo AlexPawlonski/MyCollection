@@ -21,7 +21,7 @@ export default function LoginButton({ name, icon }: Props) {
       <IconMargin>
         <Img src={icon.src} alt={`${name}-icon`} width="25px" />
       </IconMargin>
-      <Name>Connextion avec {name}</Name>
+      <Name>Connexion avec {name}</Name>
     </Button>
   );
 }
