@@ -1,21 +1,27 @@
-import type { Metadata } from "next";
+import { Body, Glow, GlowContainer } from "@/app/css";
+import "../style/style.css";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "My Colection",
-  description: "Saas for collector",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface Props {
   children: React.ReactNode;
-}>) {
+}
+
+export default async function Layout({ children }: Props) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>MyCollection</title>
+        <meta name="description" content="Saas for collector" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <Body className={inter.className}>
+        {children}
+        <GlowContainer>
+          <Glow className="jumbo"></Glow>
+        </GlowContainer>
+      </Body>
     </html>
   );
 }
