@@ -23,4 +23,5 @@ export const IconMargin = styled.div`
   display: flex;
   align-items: center;
   margin: 0px 20px;
+  width: 25px;
 `;

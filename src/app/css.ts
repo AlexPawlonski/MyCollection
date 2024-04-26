@@ -1,16 +1,12 @@
 "use client";
-
-// import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-
-// export const basicStyles = css``;
 
 /**Body style*/
 export const Body = styled.body`
   background-color: black;
-  color: #FFF;
+  color: #fff;
   margin: 0px;
-  padding: 0px;
+  padding: 30px;
 `;
 
 export const GlowContainer = styled.div`
