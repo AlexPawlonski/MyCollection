@@ -6,7 +6,7 @@ export const Body = styled.body`
   background-color: black;
   color: #fff;
   margin: 0px;
-  padding: 30px;
+  padding: 0px;
 `;
 
 export const GlowContainer = styled.div`
@@ -22,4 +22,17 @@ export const Glow = styled.div`
   inset: -10px;
 `;
 
+/**Margin */
+
+export const Wrapper = styled.div`
+  padding: 30px;
+`;
+
 /**Home style*/
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+`;

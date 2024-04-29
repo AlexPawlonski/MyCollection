@@ -9,8 +9,6 @@ interface Props {
 }
 
 export default function ProfilComponent({ session }: Props) {
-  console.log(session.user.image);
-
   return (
     <Container>
       <TitleWrapper>
