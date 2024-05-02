@@ -17,8 +17,18 @@ import { InputText } from "@/components/form";
 import { IForm } from "@/interface/Iform";
 import { createCollection } from "./action";
 
-export default function CollectionForm() {
-  const { setIsActive, setPopUpType } = useContext(PopUpContext);
+interface Props {
+  collection?: {
+    id: string;
+    name: string;
+    createdAt: Date;
+    updatedAt: Date;
+    accountId: string | null;
+  };
+}
+
+export default function CollectionForm({ collection }: Props) {
+  const { setPopUpStatus } = useContext(PopUpContext);
 
   const {
     register,
@@ -29,13 +39,13 @@ export default function CollectionForm() {
   const submitForm = async (formData: IForm) => {
     const responce = await createCollection(formData);
     if (responce.isSuccess) {
-      setIsActive(false);
-      setPopUpType(null);
+      setPopUpStatus(null);
     }
   };
 
   return (
     <Container>
+      {collection && <p>edite {collection.name}</p>}
       <form onSubmit={handleSubmit(submitForm)}>
         <Header>
           <Title>Nouvelle Collection</Title>
@@ -46,10 +56,7 @@ export default function CollectionForm() {
             <FontAwesomeIcon
               icon={faPlus}
               className={CancelIcon}
-              onClick={() => {
-                setIsActive(false);
-                setPopUpType(null);
-              }}
+              onClick={() => setPopUpStatus(null)}
             />
           </IconContainer>
         </Header>

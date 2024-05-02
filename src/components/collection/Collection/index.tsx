@@ -21,7 +21,7 @@ export default function Collection({ collection }: Props) {
   return (
     <Container>
       <ButtonWrapper isActive={true}>
-        <UpdateButton type="collection-update" id={collection.id} />
+        <UpdateButton type="collection" id={collection.id} />
       </ButtonWrapper>
       <CollectionPictureWrapper isActive={true}>
         <Img

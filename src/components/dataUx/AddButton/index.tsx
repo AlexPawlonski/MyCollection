@@ -16,13 +16,14 @@ export default function AddButton({
   ButtonSizePx = 40,
   iconSizePx = 25,
 }: Props) {
-  let { setIsActive, setPopUpType } = useContext(PopUpContext);
+  const { setPopUpStatus } = useContext(PopUpContext);
   return (
     <Button
-      onClick={() => {
-        setIsActive(true);
-        setPopUpType(type);
-      }}
+      onClick={() =>
+        setPopUpStatus({
+          type: type,
+        })
+      }
       width={ButtonSizePx}
     >
       <FontAwesomeIcon icon={faPlus} style={{ height: iconSizePx }} />

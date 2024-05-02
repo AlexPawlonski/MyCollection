@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 export const BackgroundCss = styled("span")<{
   isActive: boolean;
-  type: "collection" | "item" | "collection-update" | "item-update" | null;
+  type?: "collection" | "item";
 }>`
   width: 100%;
   height: 100vh;
