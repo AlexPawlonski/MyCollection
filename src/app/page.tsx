@@ -2,50 +2,26 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 import { PrismaClient } from "@prisma/client";
-import { getRequireAuthSession } from "@/lib/auth";
 
-import { Loading } from "@/components/dataUx";
+import { Img, Loading } from "@/components/dataUx";
 import { ProfilComponent } from "@/components/auth";
+import { CollectionContainer } from "@/components/collection";
+
+import logoMycollection from "@public/logoMycollection.webp";
+
+import { Header, Wrapper } from "./css";
+import { Background } from "@/components/popUp";
+
+import { Providers } from "@/context/providers";
+
+import { getSession } from "./actions";
 
 export default async function Home() {
-  const session = await getRequireAuthSession();
+  const session = await getSession();
 
   if (!session) {
     return redirect("/login");
   }
-
-  const prisma = new PrismaClient();
-
-  const collections = await prisma.collection.findFirst({
-    select: {
-      items: true,
-    },
-  });
-
-  // const account = await prisma.account.findFirstOrThrow({
-  //   where: {
-  //     userId: session?.user.id,
-  //   },
-  //   select: {
-  //     id: true,
-  //   },
-  // });
-
-  // const collection = await prisma.collection.findFirstOrThrow({
-  //   where: {
-  //     accountId: account.id,
-  //   },
-  //   select: {
-  //     id: true,
-  //   },
-  // });
-
-  // await prisma.collection.create({
-  //   data: {
-  //     name: "Categorie 1",
-  //     accountId: account.id,
-  //   },
-  // });
 
   // await prisma.item.create({
   //   data: {
@@ -69,11 +45,23 @@ export default async function Home() {
   // });
 
   return (
-    <Suspense fallback={<Loading />}>
-      <main>
-        <ProfilComponent session={session} />
-        {/* {JSON.stringify(collections, null, 2)} */}
-      </main>
-    </Suspense>
+    <Providers>
+      <Suspense fallback={<Loading />}>
+        <Background />
+        <Wrapper>
+          <Header>
+            <Img
+              src={logoMycollection.src}
+              alt={`MyCollection-logo`}
+              width="180"
+            />
+            <ProfilComponent session={session} />
+          </Header>
+          <main>
+            <CollectionContainer />
+          </main>
+        </Wrapper>
+      </Suspense>
+    </Providers>
   );
 }

@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const UserName = styled.h2`
   font-size: 32px;
 `;
-export const TitleWrapper = styled.h2`
+export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
