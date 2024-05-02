@@ -44,3 +44,20 @@ export async function updateCollection(formData: IForm, id: string) {
     return { message: "Failed to update collection", isSuccess: false };
   }
 }
+
+export async function deleteCollection(id: string) {
+  try {
+    await prisma.collection.delete({
+      where: {
+        id: id,
+      },
+    });
+    revalidateTag("prisma-user");
+    return {
+      message: `${id} Deleted !`,
+      isSuccess: true,
+    };
+  } catch (e) {
+    return { message: "Failed to Deleted collection", isSuccess: false };
+  }
+}

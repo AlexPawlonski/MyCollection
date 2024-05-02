@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { InputText } from "@/components/form";
 import { IForm } from "@/interface/Iform";
 import { createCollection, updateCollection } from "./action";
+import { DeleteButton } from "@/components/dataUx";
 
 interface Props {
   collection?: {
@@ -67,6 +68,9 @@ export default function CollectionForm({ collection }: Props) {
               onClick={() => setPopUpStatus(null)}
             />
           </IconContainer>
+          {collection?.id && (
+            <DeleteButton type="collection" id={collection.id} />
+          )}
         </Header>
         <InputText
           label="Titre"
