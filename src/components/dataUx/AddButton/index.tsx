@@ -22,6 +22,7 @@ export default function AddButton({
       onClick={() =>
         setPopUpStatus({
           type: type,
+          id: undefined,
         })
       }
       width={ButtonSizePx}

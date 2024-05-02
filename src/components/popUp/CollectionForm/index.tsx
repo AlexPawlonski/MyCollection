@@ -15,7 +15,7 @@ import { PopUpContext } from "@/context/popUpContext";
 import { useForm } from "react-hook-form";
 import { InputText } from "@/components/form";
 import { IForm } from "@/interface/Iform";
-import { createCollection } from "./action";
+import { createCollection, updateCollection } from "./action";
 
 interface Props {
   collection?: {
@@ -37,18 +37,26 @@ export default function CollectionForm({ collection }: Props) {
   } = useForm<IForm>();
 
   const submitForm = async (formData: IForm) => {
-    const responce = await createCollection(formData);
-    if (responce.isSuccess) {
-      setPopUpStatus(null);
+    if (collection) {
+      const responce = await updateCollection(formData, collection.id);
+      if (responce.isSuccess) {
+        setPopUpStatus(null);
+      }
+    } else {
+      const responce = await createCollection(formData);
+      if (responce.isSuccess) {
+        setPopUpStatus(null);
+      }
     }
   };
 
   return (
     <Container>
-      {collection && <p>edite {collection.name}</p>}
       <form onSubmit={handleSubmit(submitForm)}>
         <Header>
-          <Title>Nouvelle Collection</Title>
+          <Title>
+            {collection ? "Modifier la collection" : "Nouvelle Collection"}
+          </Title>
           <IconContainer>
             <Button type="submit">
               <FontAwesomeIcon icon={faCheck} className={AddIcon} />
@@ -66,6 +74,7 @@ export default function CollectionForm({ collection }: Props) {
           register={register}
           required
           errorMessage="Merci de renseigner un titre !"
+          value={collection?.name}
         />
       </form>
     </Container>

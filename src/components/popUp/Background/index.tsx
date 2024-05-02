@@ -23,10 +23,12 @@ export default function Background() {
         if (collection !== null) {
           setCollectionUpdate(collection);
         }
+      } else {
+        setCollectionUpdate(undefined);
       }
     }
     fetchData();
-  }, [popUpStatus]);
+  }, [popUpStatus?.id, popUpStatus?.type]);
 
   return (
     <BackgroundCss isActive={Boolean(popUpStatus)} type={popUpStatus?.type}>

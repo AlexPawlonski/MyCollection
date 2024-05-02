@@ -21,6 +21,26 @@ export async function createCollection(formData: IForm) {
       isSuccess: true,
     };
   } catch (e) {
-    return { message: "Failed to create todo", isSuccess: false };
+    return { message: "Failed to create collection", isSuccess: false };
+  }
+}
+
+export async function updateCollection(formData: IForm, id: string) {
+  try {
+    await prisma.collection.update({
+      where: {
+        id: id,
+      },
+      data: {
+        name: formData.name,
+      },
+    });
+    revalidateTag("prisma-user");
+    return {
+      message: `${formData.name} Update !`,
+      isSuccess: true,
+    };
+  } catch (e) {
+    return { message: "Failed to update collection", isSuccess: false };
   }
 }
