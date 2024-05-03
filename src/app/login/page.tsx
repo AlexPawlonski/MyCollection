@@ -1,15 +1,15 @@
 import { redirect } from "next/navigation";
 import { Cotainer, LoginCard } from "./css";
 
-import { getRequireAuthSession } from "@/lib/auth";
 import { LoginButton } from "@/components/auth";
 import { Img } from "@/components/dataUx";
 
 import Logo from "@public/logoMycollection.webp";
 import { GoogleIcon } from "@public/icon";
+import { getSession } from "../actions";
 
 export default async function Login() {
-  const session = await getRequireAuthSession();
+  const session = await getSession();
 
   if (session) {
     return redirect("/");
