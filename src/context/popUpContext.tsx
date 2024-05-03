@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactElement } from "react";
+import React, { createContext, useState } from "react";
 
 interface Status {
   type: "collection" | "item";

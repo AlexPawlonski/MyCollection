@@ -1,3 +1,5 @@
+"use client";
+
 import { Img, UpdateButton } from "@/components/dataUx";
 import {
   ButtonWrapper,
@@ -6,6 +8,8 @@ import {
   IsSelected,
 } from "./css";
 import DefaultCollectionImg from "@public/defaultCollectionPictur.webp";
+import { useContext, useMemo } from "react";
+import { CollectionContext } from "@/context/collectionsContext";
 
 interface Props {
   collection: {
@@ -18,19 +22,30 @@ interface Props {
 }
 
 export default function Collection({ collection }: Props) {
+  const { collectionSelected, setCollectionSelected } =
+    useContext(CollectionContext);
+
+  const isSelected = useMemo(() => {
+    if (collectionSelected === null) {
+      return false;
+    } else {
+      return Boolean(collectionSelected.id === collection.id);
+    }
+  }, [collection.id, collectionSelected]);
+
   return (
-    <Container>
-      <ButtonWrapper isActive={true}>
+    <Container onClick={() => setCollectionSelected(collection)}>
+      <ButtonWrapper isActive={isSelected}>
         <UpdateButton type="collection" id={collection.id} />
       </ButtonWrapper>
-      <CollectionPictureWrapper isActive={true}>
+      <CollectionPictureWrapper isActive={isSelected}>
         <Img
           src={DefaultCollectionImg.src}
           alt={"collection-default-img"}
           width="100%"
         />
       </CollectionPictureWrapper>
-      <IsSelected isActive={true} />
+      <IsSelected isActive={isSelected} />
     </Container>
   );
 }

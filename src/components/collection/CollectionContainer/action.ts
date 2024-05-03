@@ -1,3 +1,4 @@
+"use server";
 import { getAccount } from "@/app/actions";
 import prisma from "@/lib/prisma";
 

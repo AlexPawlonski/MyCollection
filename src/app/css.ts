@@ -36,3 +36,9 @@ export const Header = styled.header`
   justify-content: space-between;
   margin-bottom: 30px;
 `;
+
+export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+`;
