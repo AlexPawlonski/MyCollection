@@ -1,20 +1,19 @@
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
-import { PrismaClient } from "@prisma/client";
-
 import { Img, Loading } from "@/components/dataUx";
 import { ProfilComponent } from "@/components/auth";
 import { CollectionContainer } from "@/components/collection";
 
 import logoMycollection from "@public/logoMycollection.webp";
 
-import { Header, Wrapper } from "./css";
+import { Header, Main, Wrapper } from "./css";
 import { Background } from "@/components/popUp";
 
 import { Providers } from "@/context/providers";
 
 import { getSession } from "./actions";
+import { ItemContainer } from "@/components/item";
 
 export default async function Home() {
   const session = await getSession();
@@ -57,9 +56,10 @@ export default async function Home() {
             />
             <ProfilComponent session={session} />
           </Header>
-          <main>
+          <Main>
             <CollectionContainer />
-          </main>
+            <ItemContainer />
+          </Main>
         </Wrapper>
       </Suspense>
     </Providers>

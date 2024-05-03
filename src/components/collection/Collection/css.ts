@@ -2,15 +2,6 @@
 
 import { color } from "@/style/styleRef";
 import styled from "@emotion/styled";
-
-export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  position: relative;
-`;
-
 export const CollectionPictureWrapper = styled("div")<{
   isActive: boolean;
 }>`
@@ -19,6 +10,18 @@ export const CollectionPictureWrapper = styled("div")<{
   width: 110px;
   z-index: 0;
   ${(props) => props.isActive && `box-shadow: ${color.purple} 0px 8px 10px;`};
+`;
+
+export const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  cursor: pointer;
+  &:hover ${CollectionPictureWrapper} {
+    box-shadow: ${color.purple} 0px 8px 10px;
+  }
 `;
 
 export const IsSelected = styled("div")<{

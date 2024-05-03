@@ -1,5 +1,6 @@
 "use client";
 
+import { CollectionProvider } from "./collectionsContext";
 import { PopUpProvider } from "./popUpContext";
 
 interface Props {
@@ -7,5 +8,9 @@ interface Props {
 }
 
 export function Providers({ children }: Props) {
-  return <PopUpProvider>{children}</PopUpProvider>;
+  return (
+    <PopUpProvider>
+      <CollectionProvider>{children}</CollectionProvider>
+    </PopUpProvider>
+  );
 }
